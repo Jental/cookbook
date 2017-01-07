@@ -1,0 +1,55 @@
+.hidden {
+  display: none;
+}
+
+.container2 {
+  position:relative;
+}
+.recipeListContainer {
+  position: absolute;
+  width: 100%;
+}
+.recipeList tr.selected {
+  background-color: #cadee2;
+}
+.recipeDetailsContainer {
+  float: right;
+  width: 75%;
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+  right: 0;
+  border: solid 1px #cadee2;
+  padding: 10px;
+}
+
+.generalDetails > img {
+  float: left;
+  max-width: 50%;
+  max-height: 300px;
+}
+.generalDetails > table {
+  float: left;
+  width: 50%;
+}
+.generalDetails > h5 {
+  padding-left: calc(50% + 10px);
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.recipeDetails .close {
+  position: absolute;
+}
+.table.detail th {
+  border-bottom-width: 1px;
+  border-top: none;
+}
+.recipeListItem {
+  cursor: pointer;
+}
+.searchBar {
+  margin: 20px;
+  margin-left: 0;
+  width: 100%;
+}
