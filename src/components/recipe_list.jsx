@@ -1,27 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import RecipeListItem from './recipe_list_item';
 
-const RecipeList = ({ recipes, onRecipeSelect, selectedRecipe }) => (
-  <table className="table table-bordered table-hover recipeList">
-    <thead>
-      <tr>
-        <th className="hidden">Id</th>
-        <th>Title</th>
-      </tr>
-    </thead>
-    <tbody>
-      { recipes.map((recipe) => 
-        <RecipeListItem
-            key={ recipe.id }
-            recipe={ recipe }
-            onRecipeClick={ onRecipeSelect }
-            isSelected={ selectedRecipe == recipe }
-        />
-        )
-      }
-    </tbody>
-  </table>
-);
+class RecipeList extends React.Component {
+  render() {
+    return (
+      <table className="table table-bordered table-hover recipeList">
+        <thead>
+          <tr>
+            <th className="hidden">Id</th>
+            <th>Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          { this.props.recipes.map((recipe) => 
+            <RecipeListItem
+                key={ recipe.id }
+                recipe={ recipe }
+                onRecipeClick={(r) => {
+                    // this.props.onRecipeSelect(r);
+                    this.props.store.dispatch({ type: "SET_SELECTED_RECIPE", recipe: r });
+                  }}
+                isSelected={ this.props.selectedRecipe == recipe }
+            />
+            )
+          }
+        </tbody>
+      </table>
+    );
+  }
+}
 
-export default RecipeList;
+function mapStateToProps(state) {
+  return {
+    recipes: state.recipes
+  };
+}
+
+export default connect(mapStateToProps)(RecipeList);
